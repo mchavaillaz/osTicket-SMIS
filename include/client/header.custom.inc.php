@@ -1,12 +1,9 @@
 <?php
-// Get the current page context
-$pageContext = $myVaccinesUtilities->getCurrentContext($_GET['context']);
-
 $title = ($cfg && is_object($cfg) && $cfg->getTitle())
     ? $cfg->getTitle() : 'osTicket :: ' . __('Support Ticket System');
 $signin_url = ROOT_PATH . "login.php"
     . ($thisclient ? "?e=" . urlencode($thisclient->getEmail()) : "");
-$signout_url = ROOT_PATH . "logout.php?auth=" . $ost->getLinkToken() . '&context=' . $pageContext;
+$signout_url = ROOT_PATH . "logout.php?auth=" . $ost->getLinkToken();
 
 header("Content-Type: text/html; charset=UTF-8");
 if (($lang = Internationalization::getCurrentLanguage())) {
@@ -33,7 +30,7 @@ if ($lang) {
 		<meta name="keywords" content="osTicket, Customer support system, support ticket system">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title><?php echo Format::htmlchars($title); ?></title>
+		<title>Support SMIS</title>
 
 		<link type="text/css" rel="stylesheet" href="<?php echo ASSETS_PATH; ?>css/smis.css">
 
@@ -151,14 +148,9 @@ if ($lang) {
                 if ($nav && ($navs = $nav->getNavLinks()) && is_array($navs)) {
                     foreach ($navs as $name => $nav) {
                         if ($name != 'status') {
-                            if ($name == 'tickets') {
-                                $contextParam = '&context=';
-                            } else {
-                                $contextParam = '?context=';
-                            }
                             echo sprintf('<div class="%s"><a href="%s">%s</a></div>',
                                 $nav['active'] ? 'item on' : 'item',
-                                (ROOT_PATH . $nav['href']) . $contextParam . $pageContext,
+                                (ROOT_PATH . $nav['href']),
                                 $nav['desc']);
                         }
                     }
