@@ -55,7 +55,7 @@ require(CLIENTINC_DIR . 'page-header.inc.php');
                 echo '<div id="faq"><ol>';
                 foreach ($faqs as $F) {
                     $attachments = $F->has_attachments ? '<span class="Icon file"></span>' : '';
-                    echo sprintf('<li><a href="faq.php?id=%d" style="color: black;">%s</a></li>',
+                    echo sprintf('<li class="faq-category-link"><a href="faq.php?id=%d" style="color: black;">%s</a></li>',
                         $F->getId(),
                         Format::htmlchars($F->getLocalQuestion()));
                 }
