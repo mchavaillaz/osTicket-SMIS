@@ -29,9 +29,6 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
         $forms[] = $F;
     }
 }
-
-// Get the current page context
-$pageContext = $myVaccinesUtilities->getCurrentContext($_GET['context']);
 ?>
 <!-- Top bar section -->
 <?php
@@ -44,18 +41,7 @@ require(CLIENTINC_DIR . 'page-header.inc.php');
 	<table class="table-center">
 		<tr>
 			<td>
-                <?php
-                if ($pageContext == $myVaccinesUtilities::CONTEXT_PUBLIC) {
-                    ?>
-					<img src="<?php echo ASSETS_PATH; ?>images/icons/new_ticket_green.png">
-                    <?php
-                } else {
-                    ?>
-					<img src="<?php echo ASSETS_PATH; ?>images/icons/new_ticket_blue.png">
-                    <?php
-                }
-                ?>
-
+				<img src="<?php echo ASSETS_PATH; ?>images/icons/new_ticket_green.png">
 			</td>
 		</tr>
 	</table>
@@ -69,11 +55,11 @@ if (!$thankYouText) {
 			<table class="table-center left">
 				<tr>
 					<td>
-						<img src="<?php echo ASSETS_PATH; ?>images/icons/info_<?php echo $pageContext ?>.png">
+						<img src="<?php echo ASSETS_PATH; ?>images/icons/info_public.png">
 					</td>
 					<td>
 						<p>
-							<?php echo __('Step 1: Please enter your contact details and choose a topic to allow us a fast processing of your request.'); ?>
+                            <?php echo __('Step 1: Please enter your contact details and choose a topic to allow us a fast processing of your request.'); ?>
 						</p>
 						<p>
                             <?php echo __('Step 2: Enter you question. You can also attach files to you question.'); ?>
@@ -94,7 +80,7 @@ if (!$thankYouText) {
 		</div>
     <?php } ?>
 	<!-- Ticket form -->
-	<form id="ticketForm" method="post" action="open.php?context=<?php echo $pageContext; ?>" enctype="multipart/form-data">
+	<form id="ticketForm" method="post" action="open.php" enctype="multipart/form-data">
         <?php csrf_token(); ?>
 		<input type="hidden" name="a" value="open">
 		<table class="table-center-open-ticket">
