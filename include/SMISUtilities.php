@@ -3,7 +3,7 @@
 /**
  * Class utilities for the FAQ.
  */
-class MyVaccinesUtilities
+class SMISUtilities
 {
     const CATEGORY_SPLIT_CHARACTER = "!!";
 

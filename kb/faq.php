@@ -15,10 +15,10 @@
  **********************************************************************/
 require('kb.inc.php');
 require_once(INCLUDE_DIR . 'class.faq.php');
-require_once(INCLUDE_DIR . 'MyVaccinesUtilities.php');
+require_once(INCLUDE_DIR . 'SMISUtilities.php');
 
 // Tools
-$myVaccinesUtilities = new MyVaccinesUtilities();
+$smisUtilities = new SMISUtilities();
 $faq = $category = null;
 
 if ($_REQUEST['id'] && !($faq = FAQ::lookup($_REQUEST['id'])))
