@@ -39,12 +39,16 @@ include CLIENTINC_DIR . 'search-in-faq.inc.php';
             // Build the urls according to the page context
             $faqUrl = 'kb/index.php';
             $newTicketUrl = 'open.php';
+            if ($cfg->isKnowledgebaseEnabled()) {
             ?>
-			<td style="padding-bottom: 15px;">
-				<a href="<?php echo $faqUrl; ?>">
-					<img src="<?php echo ASSETS_PATH; ?>images/icons/faq_green.png">
-				</a>
-			</td>
+				<td style="padding-bottom: 15px;">
+					<a href="<?php echo $faqUrl; ?>">
+						<img src="<?php echo ASSETS_PATH; ?>images/icons/faq_green.png">
+					</a>
+				</td>
+            <?php
+            }
+            ?>
 			<td style="padding-bottom: 15px;">
 				<a href="<?php echo $newTicketUrl; ?>">
 					<img src="<?php echo ASSETS_PATH; ?>images/icons/new_ticket_green.png">
@@ -54,12 +58,17 @@ include CLIENTINC_DIR . 'search-in-faq.inc.php';
 		<tr>
             <?php if ($BUTTONS) { ?>
                 <?php
-                if ($cfg->getClientRegistrationMode() != 'disabled' || !$cfg->isClientLoginRequired()) { ?>
-					<td>
-						<a href="<?php echo $faqUrl ?>" class="button-secondary button-big">
-                            <?php echo __('FAQ'); ?>
-						</a>
-					</td>
+                if ($cfg->getClientRegistrationMode() != 'disabled' || !$cfg->isClientLoginRequired()) {
+                    if ($cfg->isKnowledgebaseEnabled()) {
+                    ?>
+						<td>
+							<a href="<?php echo $faqUrl ?>" class="button-secondary button-big">
+								<?php echo __('FAQ'); ?>
+							</a>
+						</td>
+					<?php
+					}
+					?>
 					<td>
 						<a href="<?php echo $newTicketUrl; ?>" class="button-secondary button-big">
                             <?php echo __('Create new request'); ?>
