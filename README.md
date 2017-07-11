@@ -1,140 +1,122 @@
-osTicket
-========
+# osTicket-SMIS
+
 <a href="http://osticket.com"><img src="http://osticket.com/sites/default/files/osTicket.jpg"
 align="left" hspace="10" vspace="6"></a>
 
-**osTicket** is a widely-used open source support ticket system. It seamlessly
-integrates inquiries created via email, phone and web-based forms into a
-simple easy-to-use multi-user web interface. Manage, organize and archive
-all your support requests and responses in one place while providing your
-customers with accountability and responsiveness they deserve.
+**osTicket-SMIS** is based on <a href="https://github.com/osTicket/osTicket">osTicket</a>.
+This version is specifically designed for the <a href="http://www.smis.ch/">SMIS</a>.
 
-How osTicket works for you
---------------------------
-  1. Users create tickets via your website, email, or phone
-  1. Incoming tickets are saved and assigned to agents
-  1. Agents help your users resolve their issues
+## Requirements
 
-osTicket is an attractive alternative to higher-cost and complex customer
-support systems; simple, lightweight, reliable, open source, web-based and
-easy to setup and use. The best part is, it's completely free.
-
-Requirements
-------------
-  * HTTP server running Microsoft® IIS or Apache
-  * PHP version 5.4 or greater, 5.6 is recommended
-  * mysqli extension for PHP
-  * MySQL database version 5.0 or greater
+* Apache or HTTP server running Microsoft® IIS
+* PHP version 5.6
+* mysqli extension for PHP
+* MySQL database version 5.0 or greater
 
 ### Recommendations
-  * gd, gettext, imap, json, mbstring, and xml extensions for PHP
-  * APC module enabled and configured for PHP
+* gd, gettext, imap, json, mbstring, and xml extensions for PHP
+* APC module enabled and configured for PHP
 
-Deployment
-----------
-osTicket now supports bleeding-edge installations. The easiest way to
-install the software and track updates is to clone the public repository.
-Create a folder on you web server (using whatever method makes sense for
-you) and cd into it. Then clone the repository (the folder must be empty!):
+# Clone the project (developer)
 
-    git clone https://github.com/osTicket/osTicket
+`https://github.com/mchavaillaz/osTicket-SMIS.git`
 
-And deploy the code into somewhere in your server's www root folder, for
-instance
+# Deploy the newest version
 
-    cd osTicket
-    php manage.php deploy --setup /var/www/htdocs/osticket/
+Download the <a href="https://github.com/mchavaillaz/osTicket-SMIS/releases/latest">latest version of osTicket-SMIS</a> and extract the content in your webserver.<br>
+You can now access osTicket-SMIS and follow the installation steps at the url:
+   
+	http://localhost/osTicket-SMIS/setup/
 
-Then you can configure your server if necessary to serve that folder, and
-visit the page and install osTicket as usual. Go ahead and even delete
-setup/ folder out of the deployment location when you’re finished. Then,
-later, you can fetch updates and deploy them (from the folder where you
-cloned the git repo into)
+# Release new version
 
-    git pull
-    php manage.php deploy -v /var/www/htdocs/osticket/
+Create a new release with Github.<br>
+Tutorial available <a href="https://help.github.com/articles/creating-releases/">here</a>.
 
-Upgrading
----------
-osTicket supports upgrading from 1.6-rc1 and later versions. As with any
-upgrade, strongly consider a backup of your attachment files, database, and
-osTicket codebase before embarking on an upgrade.
+# Urls
 
-To trigger the update process, fetch the osTicket tarball from either
-the osTicket [github](http://github.com/osTicket/osTicket/releases) page
-or from the [osTicket website](http://osticket.com). Extract the tarball
-into the folder of your osTicket codebase. This can also be accomplished
-with the zip file, and a FTP client can of course be used to upload the new
-source code to your server.
+After the installation, osTicket-iQey is available at the following urls:
 
-Any way you choose your adventure, when you have your codebase upgraded to
-osTicket-1.7, visit the /scp page of you ticketing system. The upgrader will
-be presented and will walk you through the rest of the process. (The couple
-clicks needed to go through the process are pretty boring to describe).
+	http://localhost/osTicket-SMIS (user)
+	http://localhost/osTicket-SMIS/scp (admin)
 
-### Upgrading from v1.6
-**WARNING**: If you are upgrading from osTicket 1.6, please ensure that all
-    your files in your upload folder are both readable and writable to your
-    http server software. Unreadable files will not be migrated to the
-    database during the upgrade and will be effectively lost.
+# i18n
 
-After upgrading, we recommend migrating your attachments to the database or
-to the new filesystem plugin. Use the `file` command-line applet to perform
-the migration.
+The osTicket-SMIS already contains the FR/DE/EN/IT languages. At the moment only the FR and DE are enable and translated.
 
-    php manage.php file migrate --backend=6 --to=D
+Other language .phar (php archive) are available <a href="osticket.com/download">here</a>.
 
-View the UPGRADING.txt file for other todo items to complete your upgrade.
+## Text translated in admin part
 
-Help
-----
-Visit the [wiki](http://osticket.com/wiki/Home) or the
-[forum](http://osticket.com/forums/). And if you'd like professional help
-managing your osTicket installation,
-[commercial support](http://osticket.com/support/) is available.
+Certain page/text can be directly translated in the admin part.
 
-Contributing
-------------
-Create your own fork of the project and use
-[git-flow](https://github.com/nvie/gitflow) to create a new feature. Once
-the feature is published in your fork, send a pull request to begin the
-conversation of integrating your new feature into osTicket.
+## Text translated in the code
 
-### Localization
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/osticket-official/localized.png)](http://i18n.osticket.com/project/osticket-official)
+The translated texts are contained in a phar (php archive) file under `/include/i18n/XX.phar`.
 
-The interface for osTicket is now completely translatable. Language packs
-are available on the [download page](http://osticket.com/download). If you
-do not see your language there, join the [Crowdin](http://i18n.osticket.com)
-project and request to have your language added. Languages which reach 100%
-translated are are significantly reviewed will be made available on the
-osTicket download page.
+Most of the texts have been translated in messages.mo.php files (key, value).<br>
 
-The software can also be translated in place in our [JIPT site]
-(http://jipt.i18n.osticket.com). Once you have a Crowdin account, login and
-translate the software in your browser!
+### How to add/edit texts?
 
-Localizing strings in new code requires usage of a [few rules](setup/doc/i18n.md).
+Edit the file `/include/i18n_working_directory/XX/LC_MESSAGES/messages.mo.php` where **XX** is **fr/de/it**.
 
-License
--------
-osTicket is released under the GPL2 license. See the included LICENSE.txt
-file for the gory details of the General Public License.
+After editing, build a .phar with you changes.
+
+### How to add new language and add/edit texts? 
+
+Other language .phar (php archive) are available <a href="osticket.com/download">here</a>.
+
+1. Download the .phar you want and save it under `/include/i18n_working_directory/`
+2. UnPhar the .phar using the following command line `php -r '$phar = new Phar("XX.phar"); $phar->extractTo("./MyDirectory");'`
+3. Edit the file `/include/i18n_working_directory/XX/LC_MESSAGES/messages.mo.php`
+4. Build a .phar with your changes
+
+### How to build a .phar with my changes?
+
+Run the command `php /include/i18n_working_directory/build-phar.php`
+
+The configuration for the build is in  `/include/i18n_working_directory/build_phar_config.json`
+
+### How to use translated text in a page?
+
+`<?php echo __('KEY OF YOU TEXT'); ?>`
+
+# Automatic email fetching
+
+The ticket system is able to fetch email automatically and create new ticket or append ticket thread to existing ticket.
+
+This feature required a cron job on the server side. All config details are available [here](http://osticket.com/wiki/POP3/IMAP_Setting_Guide).
+
+# FAQ with dynamic icons
+
+You can use a specific icon dynamically in the FAQ admin page for a FAQ category using the following syntax: 
+
+`ICONXXX!!My Category` where XXX is the number of the icon to use.
+
+At the moment only one icon is available the "ICON1"
+
+# Help
+
+Visit the [wiki](http://osticket.com/wiki/Home) or the [forum](http://osticket.com/forums/) of osTicket.
+
+# License
+
+osTicket is released under the GPL2 license. See the included LICENSE.txt file for the gory details of the General Public License.
 
 osTicket is supported by several magical open source projects including:
 
-  * [Font-Awesome](http://fortawesome.github.com/Font-Awesome/)
-  * [HTMLawed](http://www.bioinformatics.org/phplabware/internal_utilities/htmLawed)
-  * [jQuery dropdown](http://labs.abeautifulsite.net/jquery-dropdown/)
-  * [jsTimezoneDetect](http://pellepim.bitbucket.org/jstz/)
-  * [mPDF](http://www.mpdf1.com/)
-  * [PasswordHash](http://www.openwall.com/phpass/)
-  * [PEAR](http://pear.php.net/package/PEAR)
-  * [PEAR/Auth_SASL](http://pear.php.net/package/Auth_SASL)
-  * [PEAR/Mail](http://pear.php.net/package/mail)
-  * [PEAR/Net_SMTP](http://pear.php.net/package/Net_SMTP)
-  * [PEAR/Net_Socket](http://pear.php.net/package/Net_Socket)
-  * [PEAR/Serivces_JSON](http://pear.php.net/package/Services_JSON)
-  * [php-gettext](https://launchpad.net/php-gettext/)
-  * [phpseclib](http://phpseclib.sourceforge.net/)
-  * [Spyc](http://github.com/mustangostang/spyc)
+* [Font-Awesome](http://fortawesome.github.com/Font-Awesome/)
+* [HTMLawed](http://www.bioinformatics.org/phplabware/internal_utilities/htmLawed)
+* [jQuery dropdown](http://labs.abeautifulsite.net/jquery-dropdown/)
+* [jsTimezoneDetect](http://pellepim.bitbucket.org/jstz/)
+* [mPDF](http://www.mpdf1.com/)
+* [PasswordHash](http://www.openwall.com/phpass/)
+* [PEAR](http://pear.php.net/package/PEAR)
+* [PEAR/Auth_SASL](http://pear.php.net/package/Auth_SASL)
+* [PEAR/Mail](http://pear.php.net/package/mail)
+* [PEAR/Net_SMTP](http://pear.php.net/package/Net_SMTP)
+* [PEAR/Net_Socket](http://pear.php.net/package/Net_Socket)
+* [PEAR/Serivces_JSON](http://pear.php.net/package/Services_JSON)
+* [php-gettext](https://launchpad.net/php-gettext/)
+* [phpseclib](http://phpseclib.sourceforge.net/)
+* [Spyc](http://github.com/mustangostang/spyc)
