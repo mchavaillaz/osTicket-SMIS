@@ -62,7 +62,7 @@ include CLIENTINC_DIR . 'search-in-faq.inc.php';
                     if ($cfg->isKnowledgebaseEnabled()) {
                     ?>
 						<td>
-							<a href="<?php echo $faqUrl ?>" class="button-secondary button-big">
+							<a href="<?php echo $faqUrl ?>" class="button-primary button-big" style="color: #ffffff;">
 								<?php echo __('FAQ'); ?>
 							</a>
 						</td>
@@ -70,7 +70,7 @@ include CLIENTINC_DIR . 'search-in-faq.inc.php';
 					}
 					?>
 					<td>
-						<a href="<?php echo $newTicketUrl; ?>" class="button-secondary button-big">
+						<a href="<?php echo $newTicketUrl; ?>" class="button-primary button-big" style="color: #ffffff;">
                             <?php echo __('Create new request'); ?>
 						</a>
 					</td>

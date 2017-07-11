@@ -55,21 +55,21 @@ a:visited {
 }
 
 .button-primary {
-
 	font-size: 18px;
 	color: #ffffff;
 	border: none;
 	border-radius: 2px;
 	background-color: #40c4ff;
+}
 
+.button-primary:link .button-primary:visited {
+	color: #ffffff;
 }
 
 .button-primary:hover {
-	background-image: none;
-	cursor: hand;
+	color: #ffffff;
 	cursor: pointer;
 	background-color: #7cd7ff;
-
 }
 
 .button-secondary {
