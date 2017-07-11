@@ -9,9 +9,6 @@ $text = __('This page contains the FAQ.');
 require(CLIENTINC_DIR . 'page-header.inc.php');
 ?>
 <div class="wrapper">
-</div>
-<!-- Switch FAQ context For Everybody/For Professional -->
-<div class="wrapper">
 	<div class="container">
         <?php
         $categories = Category::objects()
@@ -67,7 +64,9 @@ include CLIENTINC_DIR . 'search-in-faq.inc.php';
 					}
 					?>
 					<td class="faq-table-td">
-						<img src="<?php echo ASSETS_PATH; ?>images/icons/<?php echo $categoryIcon . '.png' ?>">
+						<a href="faq.php?cid=<?php echo $categoryId ?>">
+							<img src="<?php echo ASSETS_PATH; ?>images/icons/<?php echo $categoryIcon . '.png' ?>">
+						</a>
 					</td>
 					<td class="faq-category-title">
 						<a href="faq.php?cid=<?php echo $categoryId ?>">
