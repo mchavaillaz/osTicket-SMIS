@@ -28,6 +28,13 @@ You can now access osTicket-SMIS and follow the installation steps at the url:
    
 	http://localhost/osTicket-SMIS/setup/
 
+# Upgrade from the version 1.0.0 to the 1.0.1
+
+1. Backup the file `/include/ost-config.php` of the version 1.0.0
+2. Download the <a href="https://github.com/mchavaillaz/osTicket-SMIS/releases/latest">latest version of osTicket-SMIS</a>
+3. Extract the content in your webserver
+4. Copy the backup file (point 1) into the new version 1.0.1 under `/include/ost-config.php`
+
 # Release new version
 
 Create a new release with Github.<br>
