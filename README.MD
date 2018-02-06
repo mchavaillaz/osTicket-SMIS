@@ -92,13 +92,20 @@ Other language .phar (php archive) are available <a href="osticket.com/download"
 3. Edit the file `/include/i18n_working_directory/XX/LC_MESSAGES/messages.mo.php`
 4. Build a .phar with your changes
 
-**!!Build the .phar using php5.6!!**
-
 ### How to build a .phar with my changes?
 
 Run the command `php /include/i18n_working_directory/build-phar.php`
 
 The configuration for the build is in  `/include/i18n_working_directory/build_phar_config.json`
+
+!! macOS High Sierra uses php7 but osTicket requires php56 !!
+
+Install and configure multiple php versions on macOS High Sierra --> https://getgrav.org/blog/macos-sierra-apache-multiple-php-versions
+
+Build the .phar using php56 like this:
+
+* Go to the directory `/include/i18n_working_directory`
+* Build the .phar `/usr/local/Cellar/php56/5.6.33_9/bin/php build-phar.php`
 
 ### How to use translated text in a page?
 
