@@ -42,6 +42,13 @@ You can now access osTicket-SMIS and follow the installation steps at the url:
 3. Extract the content in your webserver
 4. Copy the backup file (point 1) into the new version 1.0.1 under `/include/ost-config.php`
 
+# Upgrade from the version 1.0.2 to the 1.0.3
+
+1. Backup the file `/include/ost-config.php` of the version 1.0.2
+2. Download the <a href="https://github.com/mchavaillaz/osTicket-SMIS/releases/latest">latest version of osTicket-SMIS</a>
+3. Extract the content in your webserver
+4. Copy the backup file (point 1) into the new version 1.0.3 under `/include/ost-config.php`
+
 # Release new version
 
 Create a new release with Github.<br>
@@ -84,6 +91,8 @@ Other language .phar (php archive) are available <a href="osticket.com/download"
 2. UnPhar the .phar using the following command line `php -r '$phar = new Phar("XX.phar"); $phar->extractTo("./MyDirectory");'`
 3. Edit the file `/include/i18n_working_directory/XX/LC_MESSAGES/messages.mo.php`
 4. Build a .phar with your changes
+
+**!!Build the .phar using php5.6!!**
 
 ### How to build a .phar with my changes?
 
